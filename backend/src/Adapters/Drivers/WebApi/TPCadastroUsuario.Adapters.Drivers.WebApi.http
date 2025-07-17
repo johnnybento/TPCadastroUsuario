@@ -1,0 +1,31 @@
+@baseUrl = http://localhost:5000/api
+@authToken = {{YOUR_JWT_TOKEN}}
+@userId = {{USER_ID}}
+
+### Authenticate (Login)
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "senha": "Senha123!"
+}
+
+### Create User
+POST {{baseUrl}}/users
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "nome": "João Silva",
+  "email": "joao.silva@example.com",
+  "senha": "Senha123!"
+}
+
+### List Users
+GET {{baseUrl}}/users
+Authorization: Bearer {{authToken}}
+
+### Get User by ID
+GET {{baseUrl}}/users/{{userId}}
+Authorization: Bearer {{authToken}}

@@ -1,0 +1,22 @@
+.error-banner {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fdd;
+  color: #900;
+  padding: 0.5rem 1rem;
+  border: 1px solid #900;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 1000;
+}
+
+.error-banner button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}

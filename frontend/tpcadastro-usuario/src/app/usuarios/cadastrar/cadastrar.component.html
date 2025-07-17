@@ -1,0 +1,58 @@
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div>
+      <label for="nome">Nome</label>
+      <input id="nome" formControlName="nome" />
+      <div
+        *ngIf="form.get('nome')?.touched && form.get('nome')?.invalid"
+        class="error"
+      >
+        Nome é obrigatório.
+      </div>
+    </div>
+
+    <div>
+      <label for="email">E‑mail</label>
+      <input id="email" formControlName="email" />
+      <div
+        *ngIf="
+          form.get('email')?.touched && form.get('email')?.hasError('email')
+        "
+        class="error"
+      >
+        E‑mail inválido.
+      </div>
+    </div>
+
+    <div>
+      <label for="senha">Senha</label>
+      <input id="senha" type="password" formControlName="senha" />
+      <div
+        *ngIf="
+          form.get('senha')?.touched && form.get('senha')?.hasError('minlength')
+        "
+        class="error"
+      >
+        Senha precisa ter ao menos 6 caracteres.
+      </div>
+    </div>
+
+    <div>
+      <label for="confirmarSenha">Confirmar Senha</label>
+      <input
+        id="confirmarSenha"
+        type="password"
+        formControlName="confirmarSenha"
+      />
+      <!-- erro de confirmação geral no form -->
+      <div
+        *ngIf="form.touched && form.hasError('passwordsMismatch')"
+        class="error"
+      >
+        As senhas não coincidem.
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="form.invalid">Cadastrar</button>
+  </form>
+</div>

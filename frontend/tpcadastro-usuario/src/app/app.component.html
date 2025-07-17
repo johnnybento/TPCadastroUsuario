@@ -1,0 +1,17 @@
+<nav>
+  <ng-container *ngIf="!isLoggedIn; else authLinks">
+    <a routerLink="/login">Login</a>
+    <a routerLink="/usuarios/cadastrar">Cadastrar</a>
+  </ng-container>
+
+  <ng-template #authLinks>
+    <span>Olá, {{ email }}!</span>
+    <a routerLink="/usuarios/listar">Listar</a>
+    <a href="#" (click)="logout(); $event.preventDefault()">Sair</a>
+  </ng-template>
+</nav>
+
+<div class="container">
+  <app-error-banner></app-error-banner>
+  <router-outlet></router-outlet>
+</div>

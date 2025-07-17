@@ -1,0 +1,71 @@
+services:
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Teste@123!"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql_data:/var/opt/mssql
+
+
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    depends_on:
+      - initdb
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ASPNETCORE_URLS: "http://+:8080"
+     
+      ConnectionStrings__DefaultConnection: >
+        Server=db,1433;
+        Database=TPCadastroUsuario;
+        User Id=sa;
+        Password=Teste@123!;
+        TrustServerCertificate=True;
+    ports:
+      - "5000:8080"      
+    networks:
+      - default
+
+  frontend:
+    build:
+      context: ./frontend/tpcadastro-usuario
+      dockerfile: Dockerfile
+    depends_on:
+      - backend
+    ports:
+      - "4200:80"
+    networks:
+      - default
+
+  initdb:
+    image: mcr.microsoft.com/mssql-tools
+    depends_on:
+      - db
+    volumes:
+      - ./backend/migra.sql:/migra.sql:ro
+    entrypoint:
+      - /opt/mssql-tools/bin/sqlcmd
+      - "-S"
+      - "db,1433"
+      - "-U"
+      - "sa"
+      - "-P"
+      - "Teste@123!"
+      - "-i"
+      - "/migra.sql"
+    networks:
+      - default
+
+volumes:
+  sql_data:
+
+networks:
+  default:
