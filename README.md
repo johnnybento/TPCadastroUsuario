@@ -16,12 +16,16 @@ Este projeto consiste em uma API ASP.NET Core 8 (backend), um frontend em Angula
 
 1. **Clone o repositório**
 
+   ```npm install 
+   ```
+
+2. **Executar as dependncias do Angular**
+      Na raiz do "tpcadastro-usuario", execute:
    ```bash
    git clone https://github.com/seu-usuario/TPCadastroUsuario.git
    cd TPCadastroUsuario
    ```
-
-2. **Build e subida dos containers**
+3. **Build e subida dos containers**
 
    Na raiz do projeto, execute:
 
@@ -36,7 +40,7 @@ Este projeto consiste em uma API ASP.NET Core 8 (backend), um frontend em Angula
    - Criar a rede interna `tpcadastrousuario_default`
    - Subir os containers de **db**, **initdb**, **backend** e **frontend**
 
-3. **Criar o banco de dados e tabelas**
+4. **Criar o banco de dados e tabelas**
 
    Após o passo anterior, rode o init‑container para aplicar o script de migração:
 
@@ -46,7 +50,7 @@ Este projeto consiste em uma API ASP.NET Core 8 (backend), um frontend em Angula
 
    Esse comando monta o `backend/migra.sql` dentro de um container com `sqlcmd` e executa a criação do banco e das tabelas.
 
-4. **Verifique os serviços**
+5. **Verifique os serviços**
 
    ```bash
    docker-compose ps
@@ -59,12 +63,11 @@ Este projeto consiste em uma API ASP.NET Core 8 (backend), um frontend em Angula
    | sqlserver                    | db       | 0.0.0.0:1433->1433/tcp |
    | tpcadastrousuario-backend-1  | backend  | 0.0.0.0:5000->8080/tcp |
    | tpcadastrousuario-frontend-1 | frontend | 0.0.0.0:4200->80/tcp   |
-
-5. **Acesse a aplicação**
+     
+6. **Acesse a aplicação**
 
    - **Swagger da API**: [http://localhost:5000/swagger](http://localhost:5000/swagger)
    - **Frontend Angular**: [http://localhost:4200/](http://localhost:4200/)
-
 ---
 
 ## Comandos úteis
