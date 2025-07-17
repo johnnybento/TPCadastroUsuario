@@ -16,15 +16,17 @@ Este projeto consiste em uma API ASP.NET Core 8 (backend), um frontend em Angula
 
 1. **Clone o repositório**
 
-   ```npm install 
-   ```
-
-2. **Executar as dependncias do Angular**
-      Na raiz do "tpcadastro-usuario", execute:
    ```bash
    git clone https://github.com/seu-usuario/TPCadastroUsuario.git
    cd TPCadastroUsuario
    ```
+2. **Executar as dependências do Angular**
+
+Na raiz do "tpcadastro-usuario", execute:
+
+   ```npm install 
+   ```
+
 3. **Build e subida dos containers**
 
    Na raiz do projeto, execute:
