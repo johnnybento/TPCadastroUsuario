@@ -22,9 +22,10 @@ Este projeto consiste em uma API ASP.NET Core 8 (backend), um frontend em Angula
    ```
 2. **Executar as dependências do Angular**
 
-Na raiz do "tpcadastro-usuario", execute:
+Na raiz do frontend "tpcadastro-usuario", execute:
 
-   ```npm install 
+   ```
+   npm install 
    ```
 
 3. **Build e subida dos containers**
