@@ -20,7 +20,7 @@ Este projeto consiste em uma API ASP.NET Core 8 (backend), um frontend em Angula
    git clone https://github.com/seu-usuario/TPCadastroUsuario.git
    cd TPCadastroUsuario
    ```
-2. **Executar as dependências do Angular**
+2. **Instalar as dependências do Angular**
 
 Na raiz do frontend "tpcadastro-usuario", execute:
 
