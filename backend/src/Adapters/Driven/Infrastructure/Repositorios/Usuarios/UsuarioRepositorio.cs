@@ -12,16 +12,11 @@ public class UsuarioRepositorio : EfRepository<Usuario, Guid>, IUsuarioRepositor
     : base(ctx) { }
     public async Task<Usuario?> BuscaPorEmailAsync(string email)
     {
-        var usuarios = await _dbSet.AsNoTracking().ToListAsync();
-        return usuarios.FirstOrDefault(u => u.Email.Valor == email);
-
-        //return await _dbSet.FirstOrDefaultAsync(u => u.Email.Valor == email);
+        return await _dbSet.FirstOrDefaultAsync(u => u.Email.Valor == email);
     }
     public async Task<bool> VeriricaSeExisteEmailAsync(string email)
     {
-        var usuarios = await _dbSet.AsNoTracking().ToListAsync();
-        return usuarios.Any(u => u.Email.Valor == email);
-        //return await _dbSet.AnyAsync(u => u.Email.Valor == email);
+        return await _dbSet.AnyAsync(u => u.Email.Valor == email);
     }
 }
 
