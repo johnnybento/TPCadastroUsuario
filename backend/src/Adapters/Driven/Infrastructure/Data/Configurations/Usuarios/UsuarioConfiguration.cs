@@ -16,17 +16,13 @@ public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario>
             .IsRequired()
             .HasMaxLength(100);
 
-        builder.Property(u => u.Email)
-             .HasConversion(
-           vo => vo.Valor,
-           valor => EmailVo.Criar(valor)
-
-           ).IsRequired()
-            .HasMaxLength(200)
-            .HasConversion(
-                vo => vo.Valor,
-                valor => EmailVo.Criar(valor)
-            );
+        builder.OwnsOne(u => u.Email, vo =>
+        {
+            vo.Property(e => e.Valor)
+                .HasColumnName("Email")
+                .IsRequired()
+                .HasMaxLength(200);
+        });
         builder.Property(u => u.SenhaHash)
     .IsRequired()
     .HasMaxLength(200);
